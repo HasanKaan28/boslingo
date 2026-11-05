@@ -8,7 +8,7 @@
 <meta property="og:title" content="Boslingo – Boşnakça öğren / Learn Bosnian">
 <meta property="og:description" content="Boşnakçayı bir civcivle öğren: ücretsiz, reklamsız dersler ve hikayeler. Learn Bosnian with a little chick: free lessons and stories, no ads.">
 <meta property="og:image" content="https://hasankaan28.github.io/boslingo/icon.png">
-<meta name="theme-color" content="#fdf8ef">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="icon.png">
 <link rel="preload" href="fonts/Baloo2_800ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -17,183 +17,179 @@
 @font-face { font-family: 'Nunito'; font-weight: 700; font-display: swap; src: url(fonts/Nunito_700Bold.woff2) format('woff2'); }
 @font-face { font-family: 'Nunito'; font-weight: 800; font-display: swap; src: url(fonts/Nunito_800ExtraBold.woff2) format('woff2'); }
 
-/* the app's riso-print palette: cream paper, one ink, a yolk accent, pastel tints */
 :root {
-  --paper: #fdf8ef; --card: #fffdf7; --ink: #1f1722; --muted: #5f5566; --line: #e9dcc4;
-  --yolk: #f4b52a; --yolk-soft: #fdf0cf; --sky: #4a7fc9; --river: #5cc1bd;
-  --rose: #f6d6d0; --sage: #dcefd6; --lilac: #e4dcf4; --blue: #d6e4f2;
+  --white: #ffffff; --text: #3c3c3c; --muted: #777777; --line: #e5e5e5;
+  /* Boslingo's own: the wordmark blue, the yolk, the river, the cream paper */
+  --blue: #3f78c4; --blue-dark: #2f5f9e; --blue-soft: #e3effb;
+  --yolk: #f4b52a; --yolk-dark: #c98d10; --yolk-soft: #fff4d8;
+  --river: #4fb6b1; --paper: #fdf8ef;
   --display: 'Baloo 2', 'Nunito', system-ui, sans-serif;
   --body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --radius: 22px;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-  margin: 0; color: var(--ink); font: 400 17px/1.65 var(--body);
-  /* paper with the faint halftone dots of the app's riso prints */
-  background: var(--paper) radial-gradient(rgba(31, 23, 34, .06) 1px, transparent 1.2px) 0 0 / 14px 14px;
-}
-img { max-width: 100%; display: block; }
-a { color: var(--sky); text-underline-offset: 3px; }
-:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
-.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+body { margin: 0; background: var(--white); color: var(--text); font: 400 18px/1.6 var(--body); overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: var(--blue); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
+.wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; margin: 0; line-height: 1.1; }
 
 /* one language at a time; without scripts Turkish shows */
 html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: none !important; }
 
-/* header */
-.top { position: sticky; top: 0; z-index: 10; background: rgba(253, 248, 239, .94); border-bottom: 2px solid var(--line); }
-.top .wrap { display: flex; align-items: center; gap: 16px; min-height: 68px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--sky); font: 800 30px/1 var(--display); letter-spacing: -.5px; }
-.brand img { width: 42px; height: 42px; border-radius: 50%; background: #9cc4ec; border: 2px solid var(--ink); }
-.top nav { margin-left: auto; display: flex; align-items: center; gap: 18px; }
-.top nav a { color: var(--ink); font-weight: 700; text-decoration: none; font-size: 15px; }
-.top nav a:hover { text-decoration: underline; }
-.switch { display: flex; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
-.switch button { font: 800 13px/1 var(--body); padding: 8px 12px; border: 0; background: var(--card); color: var(--ink); cursor: pointer; }
-.switch button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
-
-/* sticker buttons: an ink edge and a solid shadow, like the app's buttons */
+/* chunky buttons: a solid colour standing on a darker edge */
 .btn {
-  display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 16px;
-  border: 2.5px solid var(--ink); background: var(--yolk); color: var(--ink); text-decoration: none;
-  font: 800 16px/1.2 var(--body); box-shadow: 0 5px 0 var(--ink); transition: transform .12s ease-out, box-shadow .12s ease-out;
+  display: flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 24px;
+  border-radius: 16px; border: 2px solid transparent; border-bottom-width: 5px;
+  font: 800 15px/1.2 var(--body); letter-spacing: .8px; text-transform: uppercase; text-decoration: none; text-align: center;
+  transition: transform .1s ease-out, border-bottom-width .1s ease-out, filter .15s ease;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink); }
-.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
-.btn.quiet { background: var(--card); }
-@media (prefers-reduced-motion: reduce) { .btn, .btn:hover, .btn:active { transition: none; transform: none; } }
+.btn:hover { filter: brightness(1.05); }
+.btn:active { transform: translateY(3px); border-bottom-width: 2px; }
+.btn.primary { background: var(--yolk); border-color: var(--yolk); border-bottom-color: var(--yolk-dark); color: #3a2a06; }
+.btn.secondary { background: var(--white); border-color: var(--line); color: var(--blue); }
+.btn.on-blue { background: var(--white); border-color: var(--white); border-bottom-color: #c9d9ee; color: var(--blue); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:active { transform: none; } }
 
-/* home: hero */
-.hero { padding: 56px 0 72px; }
-.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
-.eyebrow { display: inline-block; font: 800 13px/1 var(--body); letter-spacing: 1.2px; text-transform: uppercase; background: var(--sage); border: 2px solid var(--ink); border-radius: 999px; padding: 8px 14px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 1.05; letter-spacing: -.5px; margin: 0; }
-.hero h1 { font-size: clamp(44px, 6.6vw, 82px); margin: 22px 0 18px; }
-.mark { background: linear-gradient(transparent 62%, var(--yolk) 62%, var(--yolk) 92%, transparent 92%); padding: 0 .08em; }
-.lead { font-size: 20px; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
-.stores { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.soon { display: inline-flex; flex-direction: column; padding: 10px 18px; border-radius: 16px; border: 2.5px dashed var(--ink); background: var(--card); font-weight: 800; line-height: 1.2; }
-.soon small { font-weight: 700; color: var(--muted); font-size: 13px; }
-.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 26px 0 0; padding: 0; list-style: none; font-weight: 700; }
-.facts li::before { content: '✓'; color: #2f8f5b; font-weight: 800; margin-right: 6px; }
+/* header: the wordmark, then the language switch; a get-the-app button once the hero has gone */
+.top { position: sticky; top: 0; z-index: 20; background: var(--white); }
+.top.scrolled { box-shadow: 0 2px 0 var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 14px; height: 72px; }
+.brand { display: flex; align-items: center; gap: 8px; color: var(--blue); text-decoration: none; font: 800 32px/1 var(--display); letter-spacing: -.6px; }
+.brand img { width: 44px; height: 44px; }
+.top .right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.top .cta { min-height: 42px; padding: 8px 18px; font-size: 13px; display: none; }
+.top.scrolled .cta { display: flex; }
+.switch { display: flex; gap: 4px; align-items: center; font: 800 13px/1 var(--body); color: var(--muted); letter-spacing: .6px; text-transform: uppercase; }
+.switch button { font: inherit; letter-spacing: inherit; padding: 8px 10px; border-radius: 10px; border: 2px solid transparent; background: none; color: var(--muted); cursor: pointer; }
+.switch button[aria-pressed='true'] { color: var(--blue); border-color: var(--line); }
 
-.stage { position: relative; min-height: 600px; }
-.phone {
-  position: absolute; width: 260px; border: 3px solid var(--ink); border-radius: 34px; overflow: hidden; background: var(--card);
-  /* the off-register print: a yolk copy of the edge, a little to the side */
-  box-shadow: 12px 12px 0 var(--yolk);
-}
-.phone img { width: 100%; aspect-ratio: 390 / 844; object-fit: cover; }
-.phone.front { right: 8%; top: 0; transform: rotate(3deg); z-index: 2; }
-.phone.back { left: 2%; top: 70px; transform: rotate(-6deg); box-shadow: 12px 12px 0 var(--river); }
-.stage .chick { position: absolute; width: 170px; left: 34%; bottom: -10px; z-index: 3; filter: drop-shadow(0 6px 0 rgba(31, 23, 34, .12)); }
+/* hero: a cluster of characters beside the promise */
+.hero { padding: 40px 0 56px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; min-height: calc(100vh - 220px); }
+.cluster { position: relative; aspect-ratio: 1; max-width: 480px; width: 100%; justify-self: center; }
+.cluster img { position: absolute; }
+.cluster .main { width: 58%; left: 21%; top: 20%; z-index: 2; }
+.cluster .a { width: 30%; left: 0; top: 4%; }
+.cluster .b { width: 27%; right: 2%; top: 0; }
+.cluster .c { width: 28%; right: 0; bottom: 8%; z-index: 3; }
+.cluster .d { width: 24%; left: 2%; bottom: 6%; z-index: 3; }
+.cluster .e { width: 16%; left: 40%; top: 0; }
+.cluster .f { width: 15%; left: 44%; bottom: 0; z-index: 3; }
 @media (prefers-reduced-motion: no-preference) {
-  .hero .copy > * { animation: rise .6s cubic-bezier(.23, 1, .32, 1) both; }
-  .hero .copy > :nth-child(2) { animation-delay: .06s; }
-  .hero .copy > :nth-child(3) { animation-delay: .12s; }
-  .hero .copy > :nth-child(4) { animation-delay: .18s; }
-  .stage .phone, .stage .chick { animation: rise .7s cubic-bezier(.23, 1, .32, 1) .15s both; }
+  .cluster img:not(.main) { animation: bob 5s ease-in-out infinite alternate; }
+  .cluster .b, .cluster .d { animation-delay: -2.5s; }
+  .cluster .e, .cluster .c { animation-duration: 6s; }
 }
-@keyframes rise { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes bob { from { translate: 0 0; } to { translate: 0 -10px; } }
+.promise { text-align: center; max-width: 440px; justify-self: center; }
+.promise h1 { font-size: clamp(30px, 3.4vw, 40px); color: var(--text); margin-bottom: 30px; }
+.promise .buttons { display: grid; gap: 12px; max-width: 340px; margin: 0 auto; }
+.promise small { display: block; color: var(--muted); font-size: 14px; margin-top: 14px; }
 
-/* home: sections */
-section { padding: 72px 0; }
-.kicker { font: 800 14px/1 var(--body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
-section h2 { font-size: clamp(34px, 4.6vw, 54px); margin-bottom: 14px; }
-.section-lead { color: var(--muted); font-size: 19px; max-width: 38em; margin: 0 0 40px; }
+/* the strip of interface languages, each with its costume chick */
+.langs { border-top: 2px solid var(--line); }
+.langs .wrap { display: flex; justify-content: center; gap: 8px 30px; flex-wrap: wrap; padding: 16px 0; }
+.langs div { display: flex; align-items: center; gap: 8px; font: 800 14px/1 var(--body); letter-spacing: .8px; text-transform: uppercase; color: var(--muted); }
+.langs img { width: 40px; height: 40px; object-fit: contain; }
 
-/* the three steps: round, numbered nodes like the learn path's lessons */
-.steps { display: grid; gap: 28px; position: relative; }
-.step { display: grid; grid-template-columns: 96px 1fr 240px; gap: 28px; align-items: center; background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 24px 28px; box-shadow: 0 6px 0 var(--ink); }
-.step:nth-child(1) { background: var(--rose); }
-.step:nth-child(2) { background: var(--blue); }
-.step:nth-child(3) { background: var(--sage); }
-.node { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; font: 800 40px/1 var(--display); background: #efe6d3; border: 4px solid #8a8073; color: #8a8073; box-shadow: 0 5px 0 #8a8073; }
-.step h3 { font-size: 30px; margin-bottom: 6px; }
-.step p { margin: 0; color: #3e3442; }
-.step .shot { border: 2.5px solid var(--ink); border-radius: 18px; overflow: hidden; height: 210px; background: var(--card); }
-.step .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+/* the alternating sections */
+.feature { padding: 88px 0; }
+.feature .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.feature.flip .text { order: 2; }
+.feature h2 { font-size: clamp(38px, 4.6vw, 56px); color: var(--blue); text-transform: lowercase; margin-bottom: 18px; }
+.feature p { color: var(--muted); font-size: 19px; margin: 0; max-width: 30em; }
+.feature p b { color: var(--blue); }
+.art { position: relative; justify-self: center; width: min(420px, 100%); }
+.device { width: 62%; margin: 0 auto; border-radius: 30px; border: 8px solid #2d2d2d; overflow: hidden; background: var(--paper); box-shadow: 0 24px 50px rgba(30, 30, 50, .16); }
+.device img { width: 100%; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; }
+.art .sticker { position: absolute; width: 36%; filter: drop-shadow(0 8px 10px rgba(30, 30, 50, .14)); }
+.art .s1 { left: -4%; bottom: 6%; }
+.art .s2 { right: -6%; top: 8%; width: 30%; }
+.art .s3 { right: -2%; bottom: -2%; width: 28%; }
+.art.trail .device { border-color: var(--blue-dark); }
 
-.langs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
-.lang { background: var(--card); border: 2.5px solid var(--ink); border-radius: 20px; padding: 14px 10px 16px; text-align: center; box-shadow: 0 5px 0 var(--ink); }
-.lang img { width: 100%; max-width: 120px; margin: 0 auto 6px; aspect-ratio: 1; object-fit: contain; }
-.lang b { display: block; font: 800 20px/1.1 var(--display); }
-.lang span { font-size: 13px; color: var(--muted); }
+/* the coloured band */
+.band { background: var(--blue-soft); padding: 96px 0; position: relative; overflow: hidden; text-align: center; }
+.band h2 { font-size: clamp(38px, 5vw, 64px); color: var(--blue); text-transform: lowercase; margin-bottom: 14px; }
+.band p { color: #4b5f78; max-width: 32em; margin: 0 auto 30px; }
+.band .stores { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.store { display: flex; flex-direction: column; align-items: flex-start; min-width: 190px; padding: 10px 20px; border-radius: 14px; background: #1f1f24; color: var(--white); text-align: left; }
+.store small { font-size: 12px; opacity: .8; font-weight: 700; }
+.store b { font: 800 20px/1.2 var(--body); }
+.band .float { position: absolute; width: 120px; opacity: .95; }
+.band .f1 { left: 4%; top: 14%; } .band .f2 { right: 5%; top: 10%; width: 110px; }
+.band .f3 { left: 9%; bottom: 8%; width: 96px; } .band .f4 { right: 10%; bottom: 10%; width: 104px; }
+.band .inner { position: relative; z-index: 1; }
 
-.trail { position: relative; padding: 0; }
-.trail .scene { height: 420px; background: url(img/trail.webp) center 42% / cover no-repeat; border-block: 2.5px solid var(--ink); }
-.trail .note { position: absolute; inset: auto 0 40px; }
-.trail .card { background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); box-shadow: 10px 10px 0 var(--yolk); padding: 22px 26px; max-width: 520px; }
-.trail h2 { font-size: clamp(30px, 3.6vw, 42px); }
-.trail p { margin: 8px 0 0; color: var(--muted); }
-
-.trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px; }
-.trust > div { border-top: 4px solid var(--ink); padding-top: 14px; }
-.trust b { display: block; font: 800 34px/1.1 var(--display); margin-bottom: 6px; }
-.trust p { margin: 0; color: var(--muted); }
-.row { display: flex; flex-wrap: wrap; gap: 14px; }
+/* promises */
+.promises { padding: 80px 0 40px; }
+.promises h2 { font-size: clamp(32px, 4vw, 46px); color: var(--blue); text-transform: lowercase; text-align: center; margin-bottom: 36px; }
+.promises .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.promises .grid > div { border: 2px solid var(--line); border-bottom-width: 5px; border-radius: 18px; padding: 22px 24px; }
+.promises b { display: block; font: 800 24px/1.2 var(--display); color: var(--text); margin-bottom: 6px; }
+.promises p { margin: 0; color: var(--muted); font-size: 17px; }
+.promises .links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.promises .links .btn { min-width: 220px; }
 
 /* policy pages */
-.page-hero { padding: 48px 0 8px; }
-.page-hero h1 { font-size: clamp(38px, 5.4vw, 60px); margin: 18px 0 10px; }
-.updated { color: var(--muted); font-weight: 700; margin: 0 0 22px; }
-.summary { background: var(--yolk-soft); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 18px 24px; box-shadow: 8px 8px 0 var(--yolk); max-width: 760px; }
-.summary h2 { font-size: 24px; margin-bottom: 6px; }
+.doc { padding: 40px 0 20px; }
+.doc .wrap { max-width: 800px; }
+.doc h1 { font-size: clamp(36px, 5vw, 52px); color: var(--blue); margin-bottom: 8px; }
+.updated { color: var(--muted); font-weight: 700; margin: 0 0 26px; font-size: 16px; }
+.summary { background: var(--yolk-soft); border: 2px solid #f3dfa8; border-bottom-width: 5px; border-radius: 20px; padding: 18px 26px; margin-bottom: 30px; }
+.summary h2 { font-size: 24px; color: var(--text); margin-bottom: 6px; }
 .summary ul { margin: 0; padding-left: 20px; }
-.summary li { margin: 4px 0; font-weight: 700; }
-.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 900px; margin-top: 8px; }
-.action { background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 20px 24px; box-shadow: 0 6px 0 var(--ink); }
-.action:first-child { background: var(--sage); }
-.action h2 { font-size: 26px; margin-bottom: 8px; }
-.action ol { margin: 0 0 4px; padding-left: 22px; font-weight: 700; }
-.action p { margin: 0 0 14px; }
-article { background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 8px 40px 36px; margin: 36px 0 24px; max-width: 900px; }
-article h2 { font-size: 30px; margin: 34px 0 10px; }
-article h2:first-child { margin-top: 28px; }
-article p, article li { color: #2c2330; }
+.summary li { margin: 5px 0; font-weight: 700; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 30px; }
+.action { border: 2px solid var(--line); border-bottom-width: 5px; border-radius: 20px; padding: 20px 24px; }
+.action h2 { font-size: 24px; color: var(--text); margin-bottom: 8px; }
+.action ol { margin: 0; padding-left: 22px; font-weight: 700; }
+.action p { margin: 0 0 14px; color: var(--muted); }
+article { border-top: 2px solid var(--line); padding-top: 8px; }
+article h2 { font-size: 28px; color: var(--text); margin: 34px 0 10px; }
+article p, article li { color: #4b4b4b; }
 article li { margin: 6px 0; }
-.table { overflow-x: auto; margin: 12px 0 18px; border: 2px solid var(--ink); border-radius: 16px; }
-table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
-th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1.5px solid var(--line); }
+.table { overflow-x: auto; margin: 14px 0 20px; border: 2px solid var(--line); border-radius: 16px; }
+table { border-collapse: collapse; width: 100%; font-size: 16px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 2px solid var(--line); }
 tr:last-child td { border-bottom: 0; }
-th { background: var(--yolk-soft); font-weight: 800; }
+th { background: #f7f7f7; font-weight: 800; }
 
-/* footer */
-footer { margin-top: 40px; border-top: 2px solid var(--line); padding: 34px 0 48px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; }
-footer p { margin: 0; color: var(--muted); font-size: 15px; }
-footer nav { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 700; font-size: 15px; }
-footer a { color: var(--ink); }
+/* footer under a wave */
+footer { margin-top: 80px; background: var(--blue); color: var(--white); position: relative; }
+footer .wave { position: absolute; top: -59px; left: 0; width: 100%; height: 60px; display: block; }
+footer .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 56px 0 30px; }
+footer h3 { font: 800 18px/1.2 var(--body); margin: 0 0 12px; }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li { margin: 6px 0; }
+footer a { color: #e6eefa; text-decoration: none; font-weight: 700; font-size: 15px; }
+footer a:hover { text-decoration: underline; }
+footer .switch, footer .switch button { color: #e6eefa; }
+footer .switch button[aria-pressed='true'] { color: var(--white); border-color: rgba(255, 255, 255, .6); }
+footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0 30px; font-size: 14px; color: #d6e3f5; }
 
-@media (max-width: 900px) {
-  .hero .wrap { grid-template-columns: 1fr; }
-  .stage { min-height: 520px; max-width: 520px; width: 100%; margin: 0 auto; }
-  .step { grid-template-columns: 72px 1fr; }
-  .step .shot { grid-column: 1 / -1; height: 240px; }
-  .node { width: 64px; height: 64px; font-size: 30px; }
-  .langs { grid-template-columns: repeat(3, 1fr); }
-  .trust { grid-template-columns: 1fr; }
-  .actions { grid-template-columns: 1fr; }
+@media (max-width: 860px) {
+  .hero .wrap, .feature .wrap { grid-template-columns: 1fr; gap: 28px; min-height: 0; }
+  .feature.flip .text { order: 0; }
+  .feature { padding: 56px 0; text-align: center; }
+  .feature p { margin: 0 auto; }
+  .cluster { max-width: 360px; }
+  .promises .grid, .actions { grid-template-columns: 1fr; }
+  footer .cols { grid-template-columns: 1fr 1fr; }
+  .band .float { width: 70px; opacity: .6; }
 }
-@media (max-width: 560px) {
-  body { font-size: 16px; }
-  .top nav a { display: none; }
-  .hero { padding-top: 32px; }
-  .lead { font-size: 18px; }
-  .stage { min-height: 440px; }
-  .phone { width: 190px; border-radius: 26px; box-shadow: 8px 8px 0 var(--yolk); }
-  .phone.back { box-shadow: 8px 8px 0 var(--river); top: 50px; }
-  .phone.front { right: 2%; }
-  .stage .chick { width: 120px; left: 30%; }
-  .step { padding: 18px; gap: 16px; }
-  .step h3 { font-size: 24px; }
-  .trail .scene { height: 300px; }
-  .trail .note { position: static; margin-top: -60px; }
-  .trail .card { box-shadow: 6px 6px 0 var(--yolk); }
-  article { padding: 4px 18px 24px; }
-  article h2 { font-size: 25px; }
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .brand { font-size: 28px; }
+  .top .cta { display: none !important; }
+  .langs .wrap { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-inline: 4px; }
+  .langs div { flex: none; }
+  .band { padding: 64px 0; }
+  .band .float { display: none; }
+  footer .cols { grid-template-columns: 1fr; }
   th, td { padding: 9px 10px; }
 }
 </style>
@@ -202,118 +198,129 @@ footer a { color: var(--ink); }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="img/mascot-wave.webp" alt="">boslingo</a>
-    <nav aria-label="Site">
-      <a href="privacy.html"><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></a>
-      <a href="delete-account.html"><span lang="tr">Hesabı sil</span><span lang="en">Delete account</span></a>
-      <div class="switch" role="group" aria-label="Dil / Language">
-        <button type="button" data-lang="tr" aria-pressed="true">TR</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    <div class="right">
+      <div class="switch" role="group" aria-label="Site dili / Site language">
+        <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
       </div>
-    </nav>
+      <a class="btn primary cta" href="index.html#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a>
+    </div>
   </div>
 </header>
 <main>
 
 <section class="hero">
   <div class="wrap">
-    <div class="copy">
-      <span class="eyebrow"><span lang="tr">Ücretsiz · Reklamsız · Takipsiz</span><span lang="en">Free · No ads · No tracking</span></span>
-      <h1><span lang="tr">Boşnakçayı bir <span class="mark">civcivle</span> öğren.</span><span lang="en">Learn Bosnian with a <span class="mark">little chick</span>.</span></h1>
-      <p class="lead"><span lang="tr">Beş dakikalık oyun gibi dersler, kısa hikayeler ve Saraybosna’dan Mostar’a uzanan bir yol. Boslingo, Boşnakçayı ilk kelimeden sohbete kadar adım adım öğretir.</span><span lang="en">Five-minute lessons that feel like a game, short stories, and a trail from Sarajevo to Mostar. Boslingo takes you from your first word to your first conversation, one step at a time.</span></p>
-      <div class="stores">
-        <span class="soon">Google Play<small><span lang="tr">Çok yakında</span><span lang="en">Coming soon</span></small></span>
-        <span class="soon">App Store<small><span lang="tr">Çok yakında</span><span lang="en">Coming soon</span></small></span>
-      </div>
-      <ul class="facts">
-        <li><span lang="tr">Tamamen ücretsiz</span><span lang="en">Completely free</span></li>
-        <li><span lang="tr">Hesap açmadan başla</span><span lang="en">Start without signing up</span></li>
-        <li><span lang="tr">6 dilde arayüz</span><span lang="en">Interface in 6 languages</span></li>
-      </ul>
+    <div class="cluster" aria-hidden="true">
+      <img class="main" src="img/mascot-wave.webp" alt="">
+      <img class="a" src="img/friend-highfive.webp" alt="">
+      <img class="b" src="img/chest-open.webp" alt="">
+      <img class="c" src="img/story-daily.webp" alt="">
+      <img class="d" src="img/lang-tr.webp" alt="">
+      <img class="e" src="img/icon-flame.webp" alt="">
+      <img class="f" src="img/reward-boost.webp" alt="">
     </div>
-    <div class="stage" aria-hidden="true">
-      <div class="phone back"><img src="img/shot-lesson.webp" alt=""></div>
-      <div class="phone front"><img src="img/shot-path.webp" alt=""></div>
-      <img class="chick" src="img/mascot-wave.webp" alt="">
+    <div class="promise">
+      <h1 lang="tr">Boşnakçayı oyun oynar gibi öğrenmenin en sevimli yolu!</h1><h1 lang="en">The cutest way to learn Bosnian, as easy as playing a game!</h1>
+      <div class="buttons">
+        <a class="btn primary" href="#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a>
+        <a class="btn secondary" href="#how"><span lang="tr">Nasıl çalışır?</span><span lang="en">How does it work?</span></a>
+      </div>
+      <small lang="tr">Ücretsiz · Reklamsız · Hesap açmadan başla</small><small lang="en">Free · No ads · No sign-up needed</small>
     </div>
   </div>
 </section>
 
-<section id="how">
+<nav class="langs" aria-label="Arayüz dilleri / Interface languages">
   <div class="wrap">
-    <p class="kicker"><span lang="tr">Nasıl öğrenirsin</span><span lang="en">How you learn</span></p>
-    <h2><span lang="tr">Her gün küçük bir adım</span><span lang="en">A small step every day</span></h2>
-    <p class="section-lead"><span lang="tr">Dersler, üniversitelerde okutulan bir başlangıç kursunun sırasını izler: selamlaşmadan sayılara, aileden havaya.</span><span lang="en">The lessons follow the order of a university beginners’ course: from greetings to numbers, from family to the weather.</span></p>
-    <div class="steps">
-      <div class="step">
-        <div class="node" aria-hidden="true">1</div>
-        <div><div lang="tr"><h3>Kısa dersler</h3><p>Her ders birkaç dakika: resimlerle yeni kelimeler, eşleştirme, yazma ve dinleme. Her kelimeyi Boşnakça sesli dinlersin.</p></div><div lang="en"><h3>Short lessons</h3><p>A few minutes each: new words with pictures, matching, typing and listening. You hear every word spoken in Bosnian.</p></div></div>
-        <div class="shot"><img src="img/shot-lesson.webp" alt="" loading="lazy"></div>
-      </div>
-      <div class="step">
-        <div class="node" aria-hidden="true">2</div>
-        <div><div lang="tr"><h3>Hikayeler</h3><p>Kafede, pazarda, ailenle: kısa diyaloglar ve sonunda iki soru. Her gün yeni bir hikaye seni bekler.</p></div><div lang="en"><h3>Stories</h3><p>At the café, at the market, with family: short dialogues with two questions at the end. A new story waits for you every day.</p></div></div>
-        <div class="shot"><img src="img/shot-stories.webp" alt="" loading="lazy"></div>
-      </div>
-      <div class="step">
-        <div class="node" aria-hidden="true">3</div>
-        <div><div lang="tr"><h3>Seri ve arkadaşlar</h3><p>Günlük görevler, ödül sandığı ve haftalık lig. Arkadaşlarını ekle, birbirinize can gönderin, seriyi birlikte koruyun.</p></div><div lang="en"><h3>Streaks and friends</h3><p>Daily quests, a reward chest and a weekly league. Add friends, send each other lives and keep your streaks going together.</p></div></div>
-        <div class="shot"><img src="img/shot-path.webp" alt="" loading="lazy"></div>
-      </div>
+    <div><img src="img/lang-tr.webp" alt="">Türkçe</div>
+    <div><img src="img/lang-en.webp" alt="">English</div>
+    <div><img src="img/lang-de.webp" alt="">Deutsch</div>
+    <div><img src="img/lang-it.webp" alt="">Italiano</div>
+    <div><img src="img/lang-zh.webp" alt=""><span lang="zh">中文</span></div>
+    <div><img src="img/lang-ar.webp" alt=""><span lang="ar" dir="rtl">العربية</span></div>
+  </div>
+</nav>
+
+<section class="feature" id="how">
+  <div class="wrap">
+    <div class="text"><h2 lang="tr">kısa. eğlenceli. ücretsiz.</h2><h2 lang="en">short. fun. free.</h2><p lang="tr">Her ders birkaç dakika sürer: resimlerle yeni kelimeler, eşleştirme, yazma ve dinleme. Her kelimeyi <b>Boşnakça sesli</b> duyarsın ve dersler, <b>üniversitelerde okutulan bir başlangıç kursunun</b> sırasını izler.</p><p lang="en">Each lesson takes a few minutes: new words with pictures, matching, typing and listening. You hear every word <b>spoken in Bosnian</b>, and the lessons follow the order of <b>a university beginners’ course</b>.</p></div>
+    <div class="art" aria-hidden="true"><div class="device"><img src="img/shot-lesson.webp" alt="" loading="lazy"></div><img class="sticker s1" src="img/mascot-teach.webp" alt="" loading="lazy"><img class="sticker s2" src="img/quest-lessons.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="feature flip">
+  <div class="wrap">
+    <div class="text"><h2 lang="tr">hikayelerle konuş</h2><h2 lang="en">talk through stories</h2><p lang="tr">Kafede sipariş ver, pazarda alışveriş yap, ailenle sohbet et. Kısa diyalogların sonunda iki soru seni bekler ve <b>her gün yeni bir hikaye</b> açılır.</p><p lang="en">Order at a café, shop at the market, chat with family. Two questions wait at the end of each short dialogue, and <b>a new story opens every day</b>.</p></div>
+    <div class="art" aria-hidden="true"><div class="device"><img src="img/shot-stories.webp" alt="" loading="lazy"></div><img class="sticker s1" src="img/unit-u5.webp" alt="" loading="lazy"><img class="sticker s2" src="img/story-daily.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="wrap">
+    <div class="text"><h2 lang="tr">motivasyonun hep yüksek</h2><h2 lang="en">stay motivated</h2><p lang="tr">Günlük görevler, ödül sandığı, <b>10 dakikalık 2x XP</b> ve haftalık lig. Arkadaşlarını ekle, birbirinize solucan gönderin ve <b>serinizi birlikte</b> koruyun.</p><p lang="en">Daily quests, a reward chest, <b>a 10-minute 2x XP boost</b> and a weekly league. Add friends, send each other worms and <b>keep your streaks going together</b>.</p></div>
+    <div class="art" aria-hidden="true"><div class="device"><img src="img/shot-party.webp" alt="" loading="lazy"></div><img class="sticker s1" src="img/chest-open.webp" alt="" loading="lazy"><img class="sticker s2" src="img/icon-flame.webp" alt="" loading="lazy"><img class="sticker s3" src="img/friend-highfive.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="feature flip">
+  <div class="wrap">
+    <div class="text"><h2 lang="tr">Bosna’yı adım adım gez</h2><h2 lang="en">walk across Bosnia</h2><p lang="tr">Öğrenme yolun Saraybosna’dan Višegrad’a uzanır: <b>Başçarşı, Mostar Köprüsü, Kravice şelaleleri, Jajce ve Drina</b>. Her ünite seni yeni bir yere götürür.</p><p lang="en">Your learning path runs from Sarajevo to Višegrad: <b>Baščaršija, the Mostar bridge, the Kravice falls, Jajce and the Drina</b>. Every unit takes you somewhere new.</p></div>
+    <div class="art trail" aria-hidden="true"><div class="device"><img src="img/shot-path.webp" alt="" loading="lazy"></div><img class="sticker s1" src="img/unit-c1.webp" alt="" loading="lazy"><img class="sticker s2" src="img/unit-c13.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band" id="get">
+  <img class="float f1" src="img/mascot-cheer.webp" alt="" aria-hidden="true">
+  <img class="float f2" src="img/reward-xp.webp" alt="" aria-hidden="true">
+  <img class="float f3" src="img/lang-de.webp" alt="" aria-hidden="true">
+  <img class="float f4" src="img/lang-it.webp" alt="" aria-hidden="true">
+  <div class="wrap inner">
+    <h2 lang="tr">her yerde, her zaman öğren</h2><h2 lang="en">learn anytime, anywhere</h2>
+    <p lang="tr">Boslingo çok yakında Google Play’de ve App Store’da. Yayına çıktığında indirme bağlantıları burada olacak.</p><p lang="en">Boslingo is coming soon to Google Play and the App Store. The download links will be here as soon as it is out.</p>
+    <div class="stores">
+      <div class="store"><small><span lang="tr">Çok yakında</span><span lang="en">Coming soon</span></small><b>Google Play</b></div>
+      <div class="store"><small><span lang="tr">Çok yakında</span><span lang="en">Coming soon</span></small><b>App Store</b></div>
     </div>
   </div>
 </section>
 
-<section id="languages">
+<section class="promises">
   <div class="wrap">
-    <p class="kicker"><span lang="tr">Kendi dilinden öğren</span><span lang="en">Learn from your own language</span></p>
-    <h2><span lang="tr">Altı dilde, kendi kıyafetiyle</span><span lang="en">Six languages, each in its own dress</span></h2>
-    <p class="section-lead"><span lang="tr">Arayüz ve alıştırmalar seçtiğin dilde. Dili istediğin zaman Profil’den değiştirebilirsin.</span><span lang="en">The interface and the exercises are in the language you choose. You can change it any time in Profile.</span></p>
-    <div class="langs">
-      <div class="lang"><img src="img/lang-tr.webp" alt="" loading="lazy"><b>Türkçe</b><span>Boşnakça öğren</span></div>
-      <div class="lang"><img src="img/lang-en.webp" alt="" loading="lazy"><b>English</b><span>Learn Bosnian</span></div>
-      <div class="lang"><img src="img/lang-de.webp" alt="" loading="lazy"><b>Deutsch</b><span>Lerne Bosnisch</span></div>
-      <div class="lang"><img src="img/lang-it.webp" alt="" loading="lazy"><b>Italiano</b><span>Impara il bosniaco</span></div>
-      <div class="lang"><img src="img/lang-zh.webp" alt="" loading="lazy"><b lang="zh">中文</b><span lang="zh">学习波斯尼亚语</span></div>
-      <div class="lang"><img src="img/lang-ar.webp" alt="" loading="lazy"><b lang="ar" dir="rtl">العربية</b><span lang="ar" dir="rtl">تعلّم البوسنية</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="trail" aria-labelledby="trail-title">
-  <div class="scene" role="img" aria-label="Mostar Köprüsü ve Neretva nehri / The Mostar bridge over the Neretva"></div>
-  <div class="note">
-    <div class="wrap"><div class="card">
-      <h2 id="trail-title"><span lang="tr">Saraybosna’dan Višegrad’a</span><span lang="en">From Sarajevo to Višegrad</span></h2>
-      <div lang="tr"><p>Öğrenme yolun Bosna’yı dolaşır: Başçarşı, Mostar Köprüsü, Kravice şelaleleri, Jajce ve Drina. Her ünite yeni bir yere götürür.</p></div><div lang="en"><p>Your learning path travels across Bosnia: Baščaršija, the Mostar bridge, the Kravice falls, Jajce and the Drina. Every unit takes you somewhere new.</p></div>
-    </div></div>
-  </div>
-</section>
-
-<section id="trust">
-  <div class="wrap">
-    <p class="kicker"><span lang="tr">Güvenle öğren</span><span lang="en">Learn with peace of mind</span></p>
-    <h2><span lang="tr">Bir öğrenme uygulaması. Başka bir şey değil.</span><span lang="en">A learning app. Nothing else.</span></h2>
-    <div class="trust">
+    <h2 lang="tr">gizliliğine saygı</h2><h2 lang="en">your privacy, respected</h2>
+    <div class="grid">
       <div><div lang="tr"><b>Ücretsiz</b><p>Ücret, abonelik ya da uygulama içi satın alma yok. Kâr amacı olmayan bağımsız bir proje.</p></div><div lang="en"><b>Free</b><p>No price, no subscription, no in-app purchases. An independent, non-commercial project.</p></div></div>
-      <div><div lang="tr"><b>Reklamsız</b><p>Hiç reklam yok, dersin ortasında hiçbir şey araya girmez.</p></div><div lang="en"><b>No ads</b><p>Not a single ad; nothing interrupts a lesson.</p></div></div>
+      <div><div lang="tr"><b>Reklamsız</b><p>Hiç reklam yok; dersin ortasında hiçbir şey araya girmez.</p></div><div lang="en"><b>No ads</b><p>Not a single ad; nothing interrupts a lesson.</p></div></div>
       <div><div lang="tr"><b>Takip yok</b><p>Analiz ya da takip aracı yok, veri satılmaz. Hesabını ve verini tek dokunuşla silebilirsin.</p></div><div lang="en"><b>No tracking</b><p>No analytics or trackers, and no data is sold. You can delete your account and data in one tap.</p></div></div>
     </div>
-    <div class="row">
-      <a class="btn" href="privacy.html"><span lang="tr">Gizlilik politikası</span><span lang="en">Privacy policy</span></a>
-      <a class="btn quiet" href="delete-account.html"><span lang="tr">Hesabını sil</span><span lang="en">Delete your account</span></a>
+    <div class="links">
+      <a class="btn secondary" href="privacy.html"><span lang="tr">Gizlilik politikası</span><span lang="en">Privacy policy</span></a>
+      <a class="btn secondary" href="delete-account.html"><span lang="tr">Hesabını sil</span><span lang="en">Delete your account</span></a>
     </div>
   </div>
 </section>
 
 </main>
 <footer>
+  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 240 0 480 0 720 30 C 960 60 1200 60 1440 10 L1440 60 Z" fill="#3f78c4"/></svg>
   <div class="wrap">
-    <p><span lang="tr">Boslingo · Boşnakça öğrenmek için bağımsız, ücretsiz bir uygulama.</span><span lang="en">Boslingo · an independent, free app for learning Bosnian.</span><br><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></p>
-    <nav aria-label="Footer">
-      <a href="index.html">Boslingo</a>
-      <a href="privacy.html"><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></a>
-      <a href="delete-account.html"><span lang="tr">Hesabı sil</span><span lang="en">Delete account</span></a>
-    </nav>
+    <div class="cols">
+      <div><h3>Boslingo</h3><ul>
+        <li><a href="index.html"><span lang="tr">Ana sayfa</span><span lang="en">Home</span></a></li>
+        <li><a href="index.html#how"><span lang="tr">Nasıl çalışır?</span><span lang="en">How it works</span></a></li>
+        <li><a href="index.html#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a></li></ul></div>
+      <div><h3><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></h3><ul>
+        <li><a href="privacy.html"><span lang="tr">Gizlilik politikası</span><span lang="en">Privacy policy</span></a></li>
+        <li><a href="delete-account.html"><span lang="tr">Hesabını sil</span><span lang="en">Delete your account</span></a></li></ul></div>
+      <div><h3><span lang="tr">İletişim</span><span lang="en">Contact</span></h3><ul>
+        <li><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></li></ul></div>
+      <div><h3><span lang="tr">Site dili</span><span lang="en">Site language</span></h3>
+        <div class="switch" role="group" aria-label="Site dili / Site language">
+          <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+        </div></div>
+    </div>
+    <div class="bottom"><span lang="tr">© 2026 Boslingo · Boşnakça öğrenmek için bağımsız, ücretsiz bir uygulama.</span><span lang="en">© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
   </div>
 </footer>
 <script>
@@ -328,11 +335,20 @@ footer a { color: var(--ink); }
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
   }
-  var first = stored() || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+  var asked = new URLSearchParams(location.search).get('lang');
+  if (asked === 'tr' || asked === 'en') remember(asked);
+  var first = (asked === 'tr' || asked === 'en') ? asked : stored() || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
   show(first);
   document.querySelectorAll('.switch button').forEach(function (b) {
     b.addEventListener('click', function () { show(b.dataset.lang); remember(b.dataset.lang); });
   });
+  var top = document.querySelector('.top');
+  var hero = document.querySelector('.hero');
+  if (top && hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) { top.classList.toggle('scrolled', !entries[0].isIntersecting); }).observe(hero);
+  } else if (top) {
+    top.classList.add('scrolled');
+  }
 })();
 </script>
 </body>
