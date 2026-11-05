@@ -128,6 +128,20 @@ h1, h2, h3 { font-family: var(--display); font-weight: 800; margin: 0; line-heig
 .promises .links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
 .promises .links .btn { min-width: 220px; }
 
+/* feedback */
+.feedback { padding: 40px 0 80px; }
+.feedback .wrap { max-width: 640px; }
+.feedback h2 { font-size: clamp(32px, 4vw, 46px); color: var(--blue); text-transform: lowercase; text-align: center; margin-bottom: 10px; }
+.feedback .wrap > p { text-align: center; color: var(--muted); font-size: 18px; margin: 0 0 24px; }
+#feedback-form { display: grid; gap: 10px; border: 2px solid var(--line); border-bottom-width: 5px; border-radius: 20px; padding: 24px; background: var(--white); }
+#feedback-form label { font: 800 16px/1.2 var(--display); color: var(--text); }
+#feedback-form textarea, #feedback-form input[type=email] { font: inherit; font-size: 17px; border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; background: #fdf8ef; color: var(--text); resize: vertical; }
+#feedback-form textarea:focus, #feedback-form input:focus { outline: 3px solid var(--yolk); outline-offset: 1px; }
+#feedback-form .btn { justify-self: start; min-width: 180px; margin-top: 6px; }
+#feedback-form .hidden { display: none; }
+#feedback-form .status { margin: 0; font-weight: 700; min-height: 1.4em; }
+#feedback-form .status.ok { color: #2f7d5c; } #feedback-form .status.bad { color: #e2432a; }
+
 /* policy pages */
 .doc { padding: 40px 0 20px; }
 .doc .wrap { max-width: 800px; }
@@ -230,6 +244,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
         <li><a href="privacy.html"><span>Privacy policy</span></a></li>
         <li><a href="delete-account.html"><span>Delete your account</span></a></li></ul></div>
       <div><h3><span>Contact</span></h3><ul>
+        <li><a href="index.html#feedback"><span>Feedback</span></a></li>
         <li><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></li></ul></div>
     </div>
     <div class="bottom"><span>© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
@@ -245,6 +260,31 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   } else {
     top.classList.add('scrolled');
   }
+})();
+(function () {
+  var form = document.getElementById('feedback-form');
+  if (!form) return;
+  var status = form.querySelector('.status');
+  var button = form.querySelector('button');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var message = form.message.value.trim();
+    if (!message || form.botcheck.checked) return;
+    var body = { access_key: form.dataset.key, subject: 'Boslingo feedback (site, ' + form.dataset.lang + ')',
+      from_name: 'Boslingo site', message: message };
+    if (form.email.value.trim()) body.replyto = form.email.value.trim();
+    status.className = 'status'; status.textContent = status.dataset.sending; button.disabled = true;
+    fetch('https://api.web3forms.com/submit', { method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (d) { return r.ok && d && d.success; }); })
+      .catch(function () { return false; })
+      .then(function (ok) {
+        button.disabled = false;
+        status.className = 'status ' + (ok ? 'ok' : 'bad');
+        status.textContent = ok ? status.dataset.sent : status.dataset.failed;
+        if (ok) form.reset();
+      });
+  });
 })();
 </script>
 </body>
