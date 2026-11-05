@@ -1,57 +1,281 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr" data-lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Delete your Boslingo account</title>
+<title>Boslingo – Hesabını sil / Delete your account</title>
+<meta name="description" content="Boslingo hesabını ve tüm verini sil. Delete your Boslingo account and all its data.">
+<meta property="og:title" content="Boslingo – Hesabını sil / Delete your account">
+<meta property="og:description" content="Boslingo hesabını ve tüm verini sil. Delete your Boslingo account and all its data.">
+<meta property="og:image" content="https://hasankaan28.github.io/boslingo/icon.png">
+<meta name="theme-color" content="#fdf8ef">
 <link rel="icon" href="icon.png">
+<link rel="preload" href="fonts/Baloo2_800ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root { --paper: #fdf8ef; --ink: #1f1722; --muted: #6b6170; --accent: #f4b52a; --line: #e8dcc6; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
-  header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-  header img { width: 48px; height: 48px; border-radius: 12px; }
-  header a { color: var(--ink); font-weight: 800; font-size: 22px; text-decoration: none; }
-  h1 { font-size: 28px; line-height: 1.2; margin: 32px 0 8px; }
-  h2 { font-size: 20px; margin: 28px 0 8px; }
-  a { color: #2d6fb7; }
-  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 15px; }
-  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
-  th { background: #f6ecd9; }
-  .table { overflow-x: auto; }
-  hr { border: 0; border-top: 2px solid var(--line); margin: 48px 0; }
-  nav { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 48px; font-size: 15px; }
+@font-face { font-family: 'Baloo 2'; font-weight: 800; font-display: swap; src: url(fonts/Baloo2_800ExtraBold.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 400; font-display: swap; src: url(fonts/Nunito_400Regular.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 700; font-display: swap; src: url(fonts/Nunito_700Bold.woff2) format('woff2'); }
+@font-face { font-family: 'Nunito'; font-weight: 800; font-display: swap; src: url(fonts/Nunito_800ExtraBold.woff2) format('woff2'); }
+
+/* the app's riso-print palette: cream paper, one ink, a yolk accent, pastel tints */
+:root {
+  --paper: #fdf8ef; --card: #fffdf7; --ink: #1f1722; --muted: #5f5566; --line: #e9dcc4;
+  --yolk: #f4b52a; --yolk-soft: #fdf0cf; --sky: #4a7fc9; --river: #5cc1bd;
+  --rose: #f6d6d0; --sage: #dcefd6; --lilac: #e4dcf4; --blue: #d6e4f2;
+  --display: 'Baloo 2', 'Nunito', system-ui, sans-serif;
+  --body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius: 22px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; color: var(--ink); font: 400 17px/1.65 var(--body);
+  /* paper with the faint halftone dots of the app's riso prints */
+  background: var(--paper) radial-gradient(rgba(31, 23, 34, .06) 1px, transparent 1.2px) 0 0 / 14px 14px;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--sky); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+/* one language at a time; without scripts Turkish shows */
+html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: none !important; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(253, 248, 239, .94); border-bottom: 2px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 16px; min-height: 68px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--sky); font: 800 30px/1 var(--display); letter-spacing: -.5px; }
+.brand img { width: 42px; height: 42px; border-radius: 50%; background: #9cc4ec; border: 2px solid var(--ink); }
+.top nav { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+.top nav a { color: var(--ink); font-weight: 700; text-decoration: none; font-size: 15px; }
+.top nav a:hover { text-decoration: underline; }
+.switch { display: flex; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.switch button { font: 800 13px/1 var(--body); padding: 8px 12px; border: 0; background: var(--card); color: var(--ink); cursor: pointer; }
+.switch button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+
+/* sticker buttons: an ink edge and a solid shadow, like the app's buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 16px;
+  border: 2.5px solid var(--ink); background: var(--yolk); color: var(--ink); text-decoration: none;
+  font: 800 16px/1.2 var(--body); box-shadow: 0 5px 0 var(--ink); transition: transform .12s ease-out, box-shadow .12s ease-out;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink); }
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
+.btn.quiet { background: var(--card); }
+@media (prefers-reduced-motion: reduce) { .btn, .btn:hover, .btn:active { transition: none; transform: none; } }
+
+/* home: hero */
+.hero { padding: 56px 0 72px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.eyebrow { display: inline-block; font: 800 13px/1 var(--body); letter-spacing: 1.2px; text-transform: uppercase; background: var(--sage); border: 2px solid var(--ink); border-radius: 999px; padding: 8px 14px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 1.05; letter-spacing: -.5px; margin: 0; }
+.hero h1 { font-size: clamp(44px, 6.6vw, 82px); margin: 22px 0 18px; }
+.mark { background: linear-gradient(transparent 62%, var(--yolk) 62%, var(--yolk) 92%, transparent 92%); padding: 0 .08em; }
+.lead { font-size: 20px; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+.stores { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.soon { display: inline-flex; flex-direction: column; padding: 10px 18px; border-radius: 16px; border: 2.5px dashed var(--ink); background: var(--card); font-weight: 800; line-height: 1.2; }
+.soon small { font-weight: 700; color: var(--muted); font-size: 13px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 26px 0 0; padding: 0; list-style: none; font-weight: 700; }
+.facts li::before { content: '✓'; color: #2f8f5b; font-weight: 800; margin-right: 6px; }
+
+.stage { position: relative; min-height: 600px; }
+.phone {
+  position: absolute; width: 260px; border: 3px solid var(--ink); border-radius: 34px; overflow: hidden; background: var(--card);
+  /* the off-register print: a yolk copy of the edge, a little to the side */
+  box-shadow: 12px 12px 0 var(--yolk);
+}
+.phone img { width: 100%; aspect-ratio: 390 / 844; object-fit: cover; }
+.phone.front { right: 8%; top: 0; transform: rotate(3deg); z-index: 2; }
+.phone.back { left: 2%; top: 70px; transform: rotate(-6deg); box-shadow: 12px 12px 0 var(--river); }
+.stage .chick { position: absolute; width: 170px; left: 34%; bottom: -10px; z-index: 3; filter: drop-shadow(0 6px 0 rgba(31, 23, 34, .12)); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .copy > * { animation: rise .6s cubic-bezier(.23, 1, .32, 1) both; }
+  .hero .copy > :nth-child(2) { animation-delay: .06s; }
+  .hero .copy > :nth-child(3) { animation-delay: .12s; }
+  .hero .copy > :nth-child(4) { animation-delay: .18s; }
+  .stage .phone, .stage .chick { animation: rise .7s cubic-bezier(.23, 1, .32, 1) .15s both; }
+}
+@keyframes rise { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+
+/* home: sections */
+section { padding: 72px 0; }
+.kicker { font: 800 14px/1 var(--body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+section h2 { font-size: clamp(34px, 4.6vw, 54px); margin-bottom: 14px; }
+.section-lead { color: var(--muted); font-size: 19px; max-width: 38em; margin: 0 0 40px; }
+
+/* the three steps: round, numbered nodes like the learn path's lessons */
+.steps { display: grid; gap: 28px; position: relative; }
+.step { display: grid; grid-template-columns: 96px 1fr 240px; gap: 28px; align-items: center; background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 24px 28px; box-shadow: 0 6px 0 var(--ink); }
+.step:nth-child(1) { background: var(--rose); }
+.step:nth-child(2) { background: var(--blue); }
+.step:nth-child(3) { background: var(--sage); }
+.node { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; font: 800 40px/1 var(--display); background: #efe6d3; border: 4px solid #8a8073; color: #8a8073; box-shadow: 0 5px 0 #8a8073; }
+.step h3 { font-size: 30px; margin-bottom: 6px; }
+.step p { margin: 0; color: #3e3442; }
+.step .shot { border: 2.5px solid var(--ink); border-radius: 18px; overflow: hidden; height: 210px; background: var(--card); }
+.step .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+.langs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.lang { background: var(--card); border: 2.5px solid var(--ink); border-radius: 20px; padding: 14px 10px 16px; text-align: center; box-shadow: 0 5px 0 var(--ink); }
+.lang img { width: 100%; max-width: 120px; margin: 0 auto 6px; aspect-ratio: 1; object-fit: contain; }
+.lang b { display: block; font: 800 20px/1.1 var(--display); }
+.lang span { font-size: 13px; color: var(--muted); }
+
+.trail { position: relative; padding: 0; }
+.trail .scene { height: 420px; background: url(img/trail.webp) center 42% / cover no-repeat; border-block: 2.5px solid var(--ink); }
+.trail .note { position: absolute; inset: auto 0 40px; }
+.trail .card { background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); box-shadow: 10px 10px 0 var(--yolk); padding: 22px 26px; max-width: 520px; }
+.trail h2 { font-size: clamp(30px, 3.6vw, 42px); }
+.trail p { margin: 8px 0 0; color: var(--muted); }
+
+.trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px; }
+.trust > div { border-top: 4px solid var(--ink); padding-top: 14px; }
+.trust b { display: block; font: 800 34px/1.1 var(--display); margin-bottom: 6px; }
+.trust p { margin: 0; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* policy pages */
+.page-hero { padding: 48px 0 8px; }
+.page-hero h1 { font-size: clamp(38px, 5.4vw, 60px); margin: 18px 0 10px; }
+.updated { color: var(--muted); font-weight: 700; margin: 0 0 22px; }
+.summary { background: var(--yolk-soft); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 18px 24px; box-shadow: 8px 8px 0 var(--yolk); max-width: 760px; }
+.summary h2 { font-size: 24px; margin-bottom: 6px; }
+.summary ul { margin: 0; padding-left: 20px; }
+.summary li { margin: 4px 0; font-weight: 700; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 900px; margin-top: 8px; }
+.action { background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 20px 24px; box-shadow: 0 6px 0 var(--ink); }
+.action:first-child { background: var(--sage); }
+.action h2 { font-size: 26px; margin-bottom: 8px; }
+.action ol { margin: 0 0 4px; padding-left: 22px; font-weight: 700; }
+.action p { margin: 0 0 14px; }
+article { background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 8px 40px 36px; margin: 36px 0 24px; max-width: 900px; }
+article h2 { font-size: 30px; margin: 34px 0 10px; }
+article h2:first-child { margin-top: 28px; }
+article p, article li { color: #2c2330; }
+article li { margin: 6px 0; }
+.table { overflow-x: auto; margin: 12px 0 18px; border: 2px solid var(--ink); border-radius: 16px; }
+table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1.5px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { background: var(--yolk-soft); font-weight: 800; }
+
+/* footer */
+footer { margin-top: 40px; border-top: 2px solid var(--line); padding: 34px 0 48px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; }
+footer p { margin: 0; color: var(--muted); font-size: 15px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 700; font-size: 15px; }
+footer a { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .stage { min-height: 520px; max-width: 520px; width: 100%; margin: 0 auto; }
+  .step { grid-template-columns: 72px 1fr; }
+  .step .shot { grid-column: 1 / -1; height: 240px; }
+  .node { width: 64px; height: 64px; font-size: 30px; }
+  .langs { grid-template-columns: repeat(3, 1fr); }
+  .trust { grid-template-columns: 1fr; }
+  .actions { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .top nav a { display: none; }
+  .hero { padding-top: 32px; }
+  .lead { font-size: 18px; }
+  .stage { min-height: 440px; }
+  .phone { width: 190px; border-radius: 26px; box-shadow: 8px 8px 0 var(--yolk); }
+  .phone.back { box-shadow: 8px 8px 0 var(--river); top: 50px; }
+  .phone.front { right: 2%; }
+  .stage .chick { width: 120px; left: 30%; }
+  .step { padding: 18px; gap: 16px; }
+  .step h3 { font-size: 24px; }
+  .trail .scene { height: 300px; }
+  .trail .note { position: static; margin-top: -60px; }
+  .trail .card { box-shadow: 6px 6px 0 var(--yolk); }
+  article { padding: 4px 18px 24px; }
+  article h2 { font-size: 25px; }
+  th, td { padding: 9px 10px; }
+}
 </style>
 </head>
 <body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="img/mascot-wave.webp" alt="">boslingo</a>
+    <nav aria-label="Site">
+      <a href="privacy.html"><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></a>
+      <a href="delete-account.html"><span lang="tr">Hesabı sil</span><span lang="en">Delete account</span></a>
+      <div class="switch" role="group" aria-label="Dil / Language">
+        <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
 <main>
-<header><img src="icon.png" alt=""><a href="index.html">Boslingo</a></header>
-<h1>Delete your Boslingo account</h1>
-<p>You can delete your Boslingo account and all the data the server holds about you at any time.</p>
-<h2>In the app</h2>
-<ol><li>Open the <strong>Profile</strong> tab.</li><li>Scroll down and tap <strong>Delete my account and progress</strong>.</li><li>Confirm.</li></ol>
-<p>Your account is deleted at once, with everything the server holds about you: profile, display name, XP and streak, friendships, worm gifts, your progress backup and the Google link. The app then starts fresh.</p>
-<h2>Without the app</h2>
-<p>If you no longer have the app, e-mail hasankaankarabulut121@gmail.com from any address and tell us one of these, so we can find the account:</p>
-<ul><li>your display name or friend code (shown in Profile), or</li><li>the Google e-mail address you linked.</li></ul>
-<p>We delete the account and all its data within 30 days and confirm by e-mail. Nothing is kept afterwards.</p>
-<h2>Only sign out</h2>
-<p><strong>Profile → Sign out</strong> only signs this phone out. The account and its progress backup stay, so you can sign in with Google again later. To remove them, delete the account as above.</p>
-<p>More about what Boslingo stores: <a href="privacy.html">privacy policy</a>.</p>
-<hr>
-<h1>Boslingo hesabını sil</h1>
-<p>Boslingo hesabını ve sunucunun senin hakkında tuttuğu tüm veriyi istediğin zaman silebilirsin.</p>
+<div class="wrap">
+<div class="page-hero">
+  <span class="eyebrow"><span lang="tr">Boslingo</span><span lang="en">Boslingo</span></span>
+  <h1 lang="tr">Boslingo hesabını sil</h1><h1 lang="en">Delete your Boslingo account</h1>
+  <div class="updated"></div>
+  <div class="actions">
+  <div class="action"><div lang="tr"><h2>Uygulamada</h2><ol><li>Profil sekmesini aç</li><li>En alta kaydır</li><li><b>Hesabımı ve ilerlememi sil</b>’e dokun ve onayla</li></ol></div><div lang="en"><h2>In the app</h2><ol><li>Open the Profile tab</li><li>Scroll to the bottom</li><li>Tap <b>Delete my account and progress</b> and confirm</li></ol></div></div>
+  <div class="action"><div lang="tr"><h2>Uygulama olmadan</h2><p>Bize yaz: görünen adını, arkadaş kodunu ya da bağladığın Google e-postasını belirt. 30 gün içinde her şeyi sileriz.</p></div><div lang="en"><h2>Without the app</h2><p>Write to us with your display name, friend code or the Google e-mail you linked. We delete everything within 30 days.</p></div>
+    <a class="btn" href="mailto:hasankaankarabulut121@gmail.com?subject=Boslingo%20%E2%80%93%20hesap%20silme%20%2F%20account%20deletion"><span lang="tr">Silme isteği gönder</span><span lang="en">Send a deletion request</span></a></div>
+</div>
+</div>
+<article>
+  <div lang="tr"><p>Boslingo hesabını ve sunucunun senin hakkında tuttuğu tüm veriyi istediğin zaman silebilirsin.</p>
 <h2>Uygulamada</h2>
 <ol><li><strong>Profil</strong> sekmesini aç.</li><li>Aşağı kaydır ve <strong>Hesabımı ve ilerlememi sil</strong>'e dokun.</li><li>Onayla.</li></ol>
 <p>Hesabın ve sunucunun senin hakkında tuttuğu her şey hemen silinir: profil, görünen ad, XP ve seri, arkadaşlıklar, solucan hediyeleri, ilerleme yedeğin ve Google bağlantısı. Uygulama sonra sıfırdan başlar.</p>
 <h2>Uygulama olmadan</h2>
-<p>Uygulama artık sende yoksa, herhangi bir adresten hasankaankarabulut121@gmail.com adresine yaz ve hesabı bulabilmemiz için şunlardan birini belirt:</p>
+<p>Uygulama artık sende yoksa, herhangi bir adresten <a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a> adresine yaz ve hesabı bulabilmemiz için şunlardan birini belirt:</p>
 <ul><li>görünen adın veya arkadaş kodun (Profil'de görünür), ya da</li><li>bağladığın Google e-posta adresi.</li></ul>
 <p>Hesabı ve tüm verisini 30 gün içinde siler, e-postayla bildiririz. Sonrasında hiçbir şey saklanmaz.</p>
 <h2>Yalnızca çıkış yap</h2>
-<p><strong>Profil → Çıkış yap</strong> yalnızca bu telefondan çıkış yapar. Hesap ve ilerleme yedeği kalır; sonra Google ile yeniden giriş yapabilirsin. Bunları da kaldırmak için hesabı yukarıdaki gibi sil.</p>
-<p>Boslingo'nun neyi sakladığı hakkında daha fazlası: <a href="privacy.html">gizlilik politikası</a>.</p>
-<nav><a href="index.html">Boslingo</a><a href="privacy.html">Privacy / Gizlilik</a><a href="delete-account.html">Delete account / Hesabı sil</a></nav>
+<p><strong>Profil → Çıkış yap</strong> yalnızca bu telefondan çıkış yapar. Hesap ve ilerleme yedeği kalır; sonra Google ile yeniden giriş yapabilirsin. Bunları da kaldırmak için hesabı yukarıdaki gibi sil. Boslingo'nun neyi sakladığı hakkında daha fazlası: <a href="privacy.html">gizlilik politikası</a>.</p></div>
+  <div lang="en"><p>You can delete your Boslingo account and all the data the server holds about you at any time.</p>
+<h2>In the app</h2>
+<ol><li>Open the <strong>Profile</strong> tab.</li><li>Scroll down and tap <strong>Delete my account and progress</strong>.</li><li>Confirm.</li></ol>
+<p>Your account is deleted at once, with everything the server holds about you: profile, display name, XP and streak, friendships, worm gifts, your progress backup and the Google link. The app then starts fresh.</p>
+<h2>Without the app</h2>
+<p>If you no longer have the app, e-mail <a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a> from any address and tell us one of these, so we can find the account:</p>
+<ul><li>your display name or friend code (shown in Profile), or</li><li>the Google e-mail address you linked.</li></ul>
+<p>We delete the account and all its data within 30 days and confirm by e-mail. Nothing is kept afterwards.</p>
+<h2>Only sign out</h2>
+<p><strong>Profile → Sign out</strong> only signs this phone out. The account and its progress backup stay, so you can sign in with Google again later. To remove them, delete the account as above. More about what Boslingo stores: <a href="privacy.html">privacy policy</a>.</p></div>
+</article>
+</div>
 </main>
+<footer>
+  <div class="wrap">
+    <p><span lang="tr">Boslingo · Boşnakça öğrenmek için bağımsız, ücretsiz bir uygulama.</span><span lang="en">Boslingo · an independent, free app for learning Bosnian.</span><br><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></p>
+    <nav aria-label="Footer">
+      <a href="index.html">Boslingo</a>
+      <a href="privacy.html"><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></a>
+      <a href="delete-account.html"><span lang="tr">Hesabı sil</span><span lang="en">Delete account</span></a>
+    </nav>
+  </div>
+</footer>
+<script>
+(function () {
+  var root = document.documentElement;
+  function stored() { try { return localStorage.getItem('lang'); } catch (e) { return null; } }
+  function remember(lang) { try { localStorage.setItem('lang', lang); } catch (e) {} }
+  function show(lang) {
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang);
+    document.querySelectorAll('.switch button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+  }
+  var first = stored() || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+  show(first);
+  document.querySelectorAll('.switch button').forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.lang); remember(b.dataset.lang); });
+  });
+})();
+</script>
 </body>
 </html>
