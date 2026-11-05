@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="tr" data-lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boslingo – Gizlilik politikası / Privacy policy</title>
-<meta name="description" content="Boslingo’nun neyi sakladığı, kimin neyi gördüğü ve verinin nasıl silineceği. What Boslingo stores, who sees what, and how to delete it.">
-<meta property="og:title" content="Boslingo – Gizlilik politikası / Privacy policy">
-<meta property="og:description" content="Boslingo’nun neyi sakladığı, kimin neyi gördüğü ve verinin nasıl silineceği. What Boslingo stores, who sees what, and how to delete it.">
+<title>Boslingo – Privacy policy</title>
+<meta name="description" content="What Boslingo stores, who sees what, and how to delete it.">
+<meta property="og:title" content="Boslingo – Privacy policy">
+<meta property="og:description" content="What Boslingo stores, who sees what, and how to delete it.">
 <meta property="og:image" content="https://hasankaan28.github.io/boslingo/icon.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="icon.png">
@@ -36,9 +36,6 @@ a { color: var(--blue); text-underline-offset: 3px; }
 .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
 h1, h2, h3 { font-family: var(--display); font-weight: 800; margin: 0; line-height: 1.1; }
 
-/* one language at a time; without scripts Turkish shows */
-html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: none !important; }
-
 /* chunky buttons: a solid colour standing on a darker edge */
 .btn {
   display: flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 24px;
@@ -53,7 +50,7 @@ html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: no
 .btn.on-blue { background: var(--white); border-color: var(--white); border-bottom-color: #c9d9ee; color: var(--blue); }
 @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:active { transform: none; } }
 
-/* header: the wordmark, then the language switch; a get-the-app button once the hero has gone */
+/* header: the wordmark; a get-the-app button once the hero has gone */
 .top { position: sticky; top: 0; z-index: 20; background: var(--white); }
 .top.scrolled { box-shadow: 0 2px 0 var(--line); }
 .top .wrap { display: flex; align-items: center; gap: 14px; height: 72px; }
@@ -62,9 +59,6 @@ html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: no
 .top .right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 .top .cta { min-height: 42px; padding: 8px 18px; font-size: 13px; display: none; }
 .top.scrolled .cta { display: flex; }
-.switch { display: flex; gap: 4px; align-items: center; font: 800 13px/1 var(--body); color: var(--muted); letter-spacing: .6px; text-transform: uppercase; }
-.switch button { font: inherit; letter-spacing: inherit; padding: 8px 10px; border-radius: 10px; border: 2px solid transparent; background: none; color: var(--muted); cursor: pointer; }
-.switch button[aria-pressed='true'] { color: var(--blue); border-color: var(--line); }
 
 /* hero: a cluster of characters beside the promise */
 .hero { padding: 40px 0 56px; }
@@ -161,14 +155,12 @@ th { background: #f7f7f7; font-weight: 800; }
 /* footer under a wave */
 footer { margin-top: 80px; background: var(--blue); color: var(--white); position: relative; }
 footer .wave { position: absolute; top: -59px; left: 0; width: 100%; height: 60px; display: block; }
-footer .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 56px 0 30px; }
+footer .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 56px 0 30px; }
 footer h3 { font: 800 18px/1.2 var(--body); margin: 0 0 12px; }
 footer ul { list-style: none; margin: 0; padding: 0; }
 footer li { margin: 6px 0; }
 footer a { color: #e6eefa; text-decoration: none; font-weight: 700; font-size: 15px; }
 footer a:hover { text-decoration: underline; }
-footer .switch, footer .switch button { color: #e6eefa; }
-footer .switch button[aria-pressed='true'] { color: var(--white); border-color: rgba(255, 255, 255, .6); }
 footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0 30px; font-size: 14px; color: #d6e3f5; }
 
 @media (max-width: 860px) {
@@ -199,58 +191,21 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   <div class="wrap">
     <a class="brand" href="index.html"><img src="img/mascot-wave.webp" alt="">boslingo</a>
     <div class="right">
-      <div class="switch" role="group" aria-label="Site dili / Site language">
-        <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
-        <button type="button" data-lang="en" aria-pressed="false">English</button>
-      </div>
-      <a class="btn primary cta" href="index.html#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a>
+      <a class="btn primary cta" href="index.html#get"><span>Get the app</span></a>
     </div>
   </div>
 </header>
 <main>
 <section class="doc">
 <div class="wrap">
-  <h1 lang="tr">Boslingo Gizlilik Politikası</h1><h1 lang="en">Boslingo Privacy Policy</h1>
-  <div class="updated"><p lang="tr">Son güncelleme: 5 Kasım 2026</p><p lang="en">Last updated: 5 November 2026</p></div>
-  <div class="summary"><div lang="tr"><h2>Kısaca</h2><ul>
-<li>Reklam, analiz ve takip yok; veri satılmaz.</li>
-<li>Hesabın anonim; e-posta yalnızca Google’ı bağlarsan alınır.</li>
-<li>Veriler Avrupa Birliği’nde (Frankfurt) tutulur, şifreli iletilir.</li>
-<li>Her şeyi uygulamada tek dokunuşla ya da e-postayla silebilirsin.</li></ul></div><div lang="en"><h2>In short</h2><ul>
+  <h1>Boslingo Privacy Policy</h1>
+  <div class="updated"><p>Last updated: 5 November 2026</p></div>
+  <div class="summary"><div><h2>In short</h2><ul>
 <li>No ads, no analytics, no tracking; no data is sold.</li>
 <li>Your account is anonymous; an e-mail address is only kept if you link Google.</li>
 <li>Data is stored in the European Union (Frankfurt) and sent encrypted.</li>
 <li>You can delete everything in the app in one tap, or by e-mail.</li></ul></div></div>
-  <article>
-    <div lang="tr"><p>Boslingo, Boşnakça öğrenmek için ücretsiz bir dil uygulamasıdır; ticari amacı olmayan bireysel bir geliştirici tarafından yapılmıştır. Reklam, analiz, takip veya satın alma yoktur. Bu politika uygulamanın neyi, nerede sakladığını, kimin neyi görebildiğini ve verinin nasıl silineceğini anlatır.</p>
-<h2>Hesabın</h2>
-<p>Boslingo ilk kez internete bağlandığında senin için anonim bir hesap açar. E-posta, telefon veya şifre istemez. Hesabın rastgele bir kimliği ve 6 karakterlik bir arkadaş kodu vardır.</p>
-<p><strong>İsteğe bağlı: Google ile giriş.</strong> Profil'de bir Google hesabı bağlayabilirsin; böylece uygulamayı silip yeniden yüklesen ya da telefon değiştirsen de ilerlemen kaybolmaz. Bağlarsan Google, Boslingo'ya e-posta adresini ve Google'daki adını ve profil resmini iletir. Boslingo e-posta adresini yalnızca seni giriş yaptırmak ve hangi hesabın bağlı olduğunu göstermek için kullanır; Google adın ve resmin giriş hizmetinde saklanır ama gösterilmez ve kullanılmaz. Boslingo Google şifreni hiçbir zaman görmez.</p>
-<h2>Sunucuda tutulanlar</h2>
-<div class="table"><table><thead><tr><th>Veri</th><th>Neden</th></tr></thead><tbody>
-<tr><td>Rastgele hesap kimliği ve arkadaş kodu</td><td>İlerlemeni ve arkadaşlarını bir arada tutmak, arkadaşların seni ekleyebilsin diye</td></tr>
-<tr><td>Yazdıysan görünen adın ve avatar seçimin</td><td>Arkadaşların ve lig seni tanısın diye</td></tr>
-<tr><td>Toplam XP, gün serisi, tarih ve saatleriyle XP kayıtları</td><td>Haftalık lig, arkadaş görevleri ve arkadaş akışı</td></tr>
-<tr><td>Hangi derste olduğun</td><td>Arkadaşlarına gösterilir ("şu an nerede")</td></tr>
-<tr><td>Eklediğin arkadaşlıklar</td><td>Arkadaş listen</td></tr>
-<tr><td>Gönderdiğin ve aldığın solucan hediyeleri</td><td>Arkadaşlar birbirine can gönderebilsin diye</td></tr>
-<tr><td>Öğrenme ilerlemenin yedeği (bitirdiğin dersler, tekrar kelimeleri, görevler, okunan hikayeler, ayarlar)</td><td>Yalnızca Google'ı bağladıktan sonra: yeniden yüklemede ilerlemen geri gelsin diye</td></tr>
-<tr><td>Google'dan gelen e-posta, ad ve resim</td><td>Yalnızca Google'ı bağladıktan sonra: giriş için</td></tr>
-</tbody></table></div>
-<p>Sunucu Supabase tarafından Avrupa Birliği'nde (Frankfurt) çalıştırılır; veriler şifreli (HTTPS) iletilir.</p>
-<h2>Kim neyi görür</h2>
-<ul><li>Arkadaşların görünen adını, avatarını, toplam ve bu haftaki XP'ni, gün serini, hangi derste olduğunu ve akışlarında son üç günkü XP'ni görür.</li><li>Haftalık ligde en çok çalışanların görünen adı, avatarı ve bu haftaki XP'si tüm kullanıcılara görünür.</li><li>E-posta adresini ve ilerleme yedeğini yalnızca sen görürsün.</li><li>Başka kimse verini görmez. Boslingo veri satmaz, paylaşmaz; reklam veya analiz ortağı yoktur.</li></ul>
-<h2>Cihazında kalanlar</h2>
-<p>Ders ilerlemen, günlük görevler, okunan hikayeler, arayüz dilin ve seri hatırlatmaların cihazında tutulur. Hatırlatmalar telefonun kendisinde planlanır; Boslingo anlık bildirim (push) kullanmaz, bu yüzden telefonundan hiçbir cihaz kimliği çıkmaz. Telaffuzlar uygulamanın içinde gelen ses kayıtlarıdır; kaydı olmayan bir kelimeyi telefonunun kendi metin okuma özelliği seslendirir. Boslingo yaptığın hiçbir şeyi bir ses veya yapay zekâ hizmetine göndermez.</p>
-<h2>Verini silme</h2>
-<ul><li><strong>Uygulamada:</strong> <strong>Profil → Hesabımı ve ilerlememi sil</strong>. Hesabın ve sunucunun senin hakkında tuttuğu her şey (profil, XP, arkadaşlıklar, hediyeler, ilerleme yedeği ve Google bağlantısı) hemen silinir, uygulama sıfırlanır.</li><li><strong>Uygulama olmadan:</strong> Herhangi bir adresten <a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a> adresine yaz; görünen adını veya arkadaş kodunu (Profil'de görünür) ya da bağladığın Google e-postasını belirt. Her şeyi 30 gün içinde siler ve e-postayla bildiririz.</li><li><strong>Yalnızca bu telefonda:</strong> Profil → Çıkış yap; hesap ve yedeği sunucuda kalır, sonra yeniden giriş yapabilirsin.</li></ul>
-<h2>Çocuklar</h2>
-<p>Boslingo 13 yaş ve üzeri öğrenciler içindir. Kişisel bilgi istemez; görünen ad isteğe bağlıdır ve bu ad dışında sohbet ya da serbest metin yoktur.</p>
-<h2>Değişiklikler</h2>
-<p>Bu politika değişirse yeni hali bu adreste yeni tarihle yayımlanır.</p>
-<h2>İletişim</h2>
-<p><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></p></div>
-    <div lang="en"><p>Boslingo is a free language-learning app for learning Bosnian, made by an individual developer with no commercial aim. It has no ads, no analytics, no tracking and no purchases. This policy explains what the app stores, where, who can see it, and how to delete it.</p>
+  <article><p>Boslingo is a free language-learning app for learning Bosnian, made by an individual developer with no commercial aim. It has no ads, no analytics, no tracking and no purchases. This policy explains what the app stores, where, who can see it, and how to delete it.</p>
 <h2>Your account</h2>
 <p>The first time Boslingo goes online it creates an anonymous account for you. It does not ask for an e-mail address, phone number or password. The account has a random ID and a six-character friend code.</p>
 <p><strong>Optional: Google sign-in.</strong> In Profile you can link a Google account, so your progress survives reinstalling the app or moving to a new phone. If you do, Google tells Boslingo your e-mail address and your name and profile picture as set in Google. Boslingo uses the e-mail address only to sign you in and to show you which account is linked; your Google name and picture are kept by the sign-in service but not shown or used. Boslingo never sees your Google password.</p>
@@ -277,8 +232,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
 <h2>Changes</h2>
 <p>If this policy changes, the new version will be published at this address with a new date.</p>
 <h2>Contact</h2>
-<p><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></p></div>
-  </article>
+<p><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></p></article>
 </div>
 </section>
 </main>
@@ -287,47 +241,26 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   <div class="wrap">
     <div class="cols">
       <div><h3>Boslingo</h3><ul>
-        <li><a href="index.html"><span lang="tr">Ana sayfa</span><span lang="en">Home</span></a></li>
-        <li><a href="index.html#how"><span lang="tr">Nasıl çalışır?</span><span lang="en">How it works</span></a></li>
-        <li><a href="index.html#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a></li></ul></div>
-      <div><h3><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></h3><ul>
-        <li><a href="privacy.html"><span lang="tr">Gizlilik politikası</span><span lang="en">Privacy policy</span></a></li>
-        <li><a href="delete-account.html"><span lang="tr">Hesabını sil</span><span lang="en">Delete your account</span></a></li></ul></div>
-      <div><h3><span lang="tr">İletişim</span><span lang="en">Contact</span></h3><ul>
+        <li><a href="index.html"><span>Home</span></a></li>
+        <li><a href="index.html#how"><span>How it works</span></a></li>
+        <li><a href="index.html#get"><span>Get the app</span></a></li></ul></div>
+      <div><h3><span>Privacy</span></h3><ul>
+        <li><a href="privacy.html"><span>Privacy policy</span></a></li>
+        <li><a href="delete-account.html"><span>Delete your account</span></a></li></ul></div>
+      <div><h3><span>Contact</span></h3><ul>
         <li><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></li></ul></div>
-      <div><h3><span lang="tr">Site dili</span><span lang="en">Site language</span></h3>
-        <div class="switch" role="group" aria-label="Site dili / Site language">
-          <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
-          <button type="button" data-lang="en" aria-pressed="false">English</button>
-        </div></div>
     </div>
-    <div class="bottom"><span lang="tr">© 2026 Boslingo · Boşnakça öğrenmek için bağımsız, ücretsiz bir uygulama.</span><span lang="en">© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
+    <div class="bottom"><span>© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
   </div>
 </footer>
 <script>
 (function () {
-  var root = document.documentElement;
-  function stored() { try { return localStorage.getItem('lang'); } catch (e) { return null; } }
-  function remember(lang) { try { localStorage.setItem('lang', lang); } catch (e) {} }
-  function show(lang) {
-    root.setAttribute('data-lang', lang);
-    root.setAttribute('lang', lang);
-    document.querySelectorAll('.switch button').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
-    });
-  }
-  var asked = new URLSearchParams(location.search).get('lang');
-  if (asked === 'tr' || asked === 'en') remember(asked);
-  var first = (asked === 'tr' || asked === 'en') ? asked : stored() || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
-  show(first);
-  document.querySelectorAll('.switch button').forEach(function (b) {
-    b.addEventListener('click', function () { show(b.dataset.lang); remember(b.dataset.lang); });
-  });
   var top = document.querySelector('.top');
   var hero = document.querySelector('.hero');
-  if (top && hero && 'IntersectionObserver' in window) {
+  if (!top) return;
+  if (hero && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) { top.classList.toggle('scrolled', !entries[0].isIntersecting); }).observe(hero);
-  } else if (top) {
+  } else {
     top.classList.add('scrolled');
   }
 })();

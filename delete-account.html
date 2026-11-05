@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="tr" data-lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boslingo – Hesabını sil / Delete your account</title>
-<meta name="description" content="Boslingo hesabını ve tüm verini sil. Delete your Boslingo account and all its data.">
-<meta property="og:title" content="Boslingo – Hesabını sil / Delete your account">
-<meta property="og:description" content="Boslingo hesabını ve tüm verini sil. Delete your Boslingo account and all its data.">
+<title>Boslingo – Delete your account</title>
+<meta name="description" content="Delete your Boslingo account and all its data.">
+<meta property="og:title" content="Boslingo – Delete your account">
+<meta property="og:description" content="Delete your Boslingo account and all its data.">
 <meta property="og:image" content="https://hasankaan28.github.io/boslingo/icon.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="icon.png">
@@ -36,9 +36,6 @@ a { color: var(--blue); text-underline-offset: 3px; }
 .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
 h1, h2, h3 { font-family: var(--display); font-weight: 800; margin: 0; line-height: 1.1; }
 
-/* one language at a time; without scripts Turkish shows */
-html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: none !important; }
-
 /* chunky buttons: a solid colour standing on a darker edge */
 .btn {
   display: flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 24px;
@@ -53,7 +50,7 @@ html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: no
 .btn.on-blue { background: var(--white); border-color: var(--white); border-bottom-color: #c9d9ee; color: var(--blue); }
 @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:active { transform: none; } }
 
-/* header: the wordmark, then the language switch; a get-the-app button once the hero has gone */
+/* header: the wordmark; a get-the-app button once the hero has gone */
 .top { position: sticky; top: 0; z-index: 20; background: var(--white); }
 .top.scrolled { box-shadow: 0 2px 0 var(--line); }
 .top .wrap { display: flex; align-items: center; gap: 14px; height: 72px; }
@@ -62,9 +59,6 @@ html[data-lang='tr'] [lang='en'], html[data-lang='en'] [lang='tr'] { display: no
 .top .right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 .top .cta { min-height: 42px; padding: 8px 18px; font-size: 13px; display: none; }
 .top.scrolled .cta { display: flex; }
-.switch { display: flex; gap: 4px; align-items: center; font: 800 13px/1 var(--body); color: var(--muted); letter-spacing: .6px; text-transform: uppercase; }
-.switch button { font: inherit; letter-spacing: inherit; padding: 8px 10px; border-radius: 10px; border: 2px solid transparent; background: none; color: var(--muted); cursor: pointer; }
-.switch button[aria-pressed='true'] { color: var(--blue); border-color: var(--line); }
 
 /* hero: a cluster of characters beside the promise */
 .hero { padding: 40px 0 56px; }
@@ -161,14 +155,12 @@ th { background: #f7f7f7; font-weight: 800; }
 /* footer under a wave */
 footer { margin-top: 80px; background: var(--blue); color: var(--white); position: relative; }
 footer .wave { position: absolute; top: -59px; left: 0; width: 100%; height: 60px; display: block; }
-footer .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 56px 0 30px; }
+footer .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 56px 0 30px; }
 footer h3 { font: 800 18px/1.2 var(--body); margin: 0 0 12px; }
 footer ul { list-style: none; margin: 0; padding: 0; }
 footer li { margin: 6px 0; }
 footer a { color: #e6eefa; text-decoration: none; font-weight: 700; font-size: 15px; }
 footer a:hover { text-decoration: underline; }
-footer .switch, footer .switch button { color: #e6eefa; }
-footer .switch button[aria-pressed='true'] { color: var(--white); border-color: rgba(255, 255, 255, .6); }
 footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0 30px; font-size: 14px; color: #d6e3f5; }
 
 @media (max-width: 860px) {
@@ -199,36 +191,21 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   <div class="wrap">
     <a class="brand" href="index.html"><img src="img/mascot-wave.webp" alt="">boslingo</a>
     <div class="right">
-      <div class="switch" role="group" aria-label="Site dili / Site language">
-        <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
-        <button type="button" data-lang="en" aria-pressed="false">English</button>
-      </div>
-      <a class="btn primary cta" href="index.html#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a>
+      <a class="btn primary cta" href="index.html#get"><span>Get the app</span></a>
     </div>
   </div>
 </header>
 <main>
 <section class="doc">
 <div class="wrap">
-  <h1 lang="tr">Boslingo hesabını sil</h1><h1 lang="en">Delete your Boslingo account</h1>
+  <h1>Delete your Boslingo account</h1>
   <div class="updated"></div>
   <div class="actions">
-  <div class="action"><div lang="tr"><h2>Uygulamada</h2><ol><li>Profil sekmesini aç</li><li>En alta kaydır</li><li><b>Hesabımı ve ilerlememi sil</b>’e dokun ve onayla</li></ol></div><div lang="en"><h2>In the app</h2><ol><li>Open the Profile tab</li><li>Scroll to the bottom</li><li>Tap <b>Delete my account and progress</b> and confirm</li></ol></div></div>
-  <div class="action"><div lang="tr"><h2>Uygulama olmadan</h2><p>Bize yaz: görünen adını, arkadaş kodunu ya da bağladığın Google e-postasını belirt. 30 gün içinde her şeyi sileriz.</p></div><div lang="en"><h2>Without the app</h2><p>Write to us with your display name, friend code or the Google e-mail you linked. We delete everything within 30 days.</p></div>
-    <a class="btn primary" href="mailto:hasankaankarabulut121@gmail.com?subject=Boslingo%20%E2%80%93%20hesap%20silme%20%2F%20account%20deletion"><span lang="tr">Silme isteği gönder</span><span lang="en">Send a deletion request</span></a></div>
+  <div class="action"><div><h2>In the app</h2><ol><li>Open the Profile tab</li><li>Scroll to the bottom</li><li>Tap <b>Delete my account and progress</b> and confirm</li></ol></div></div>
+  <div class="action"><div><h2>Without the app</h2><p>Write to us with your display name, friend code or the Google e-mail you linked. We delete everything within 30 days.</p></div>
+    <a class="btn primary" href="mailto:hasankaankarabulut121@gmail.com?subject=Boslingo%20%E2%80%93%20hesap%20silme%20%2F%20account%20deletion"><span>Send a deletion request</span></a></div>
 </div>
-  <article>
-    <div lang="tr"><p>Boslingo hesabını ve sunucunun senin hakkında tuttuğu tüm veriyi istediğin zaman silebilirsin.</p>
-<h2>Uygulamada</h2>
-<ol><li><strong>Profil</strong> sekmesini aç.</li><li>Aşağı kaydır ve <strong>Hesabımı ve ilerlememi sil</strong>'e dokun.</li><li>Onayla.</li></ol>
-<p>Hesabın ve sunucunun senin hakkında tuttuğu her şey hemen silinir: profil, görünen ad, XP ve seri, arkadaşlıklar, solucan hediyeleri, ilerleme yedeğin ve Google bağlantısı. Uygulama sonra sıfırdan başlar.</p>
-<h2>Uygulama olmadan</h2>
-<p>Uygulama artık sende yoksa, herhangi bir adresten <a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a> adresine yaz ve hesabı bulabilmemiz için şunlardan birini belirt:</p>
-<ul><li>görünen adın veya arkadaş kodun (Profil'de görünür), ya da</li><li>bağladığın Google e-posta adresi.</li></ul>
-<p>Hesabı ve tüm verisini 30 gün içinde siler, e-postayla bildiririz. Sonrasında hiçbir şey saklanmaz.</p>
-<h2>Yalnızca çıkış yap</h2>
-<p><strong>Profil → Çıkış yap</strong> yalnızca bu telefondan çıkış yapar. Hesap ve ilerleme yedeği kalır; sonra Google ile yeniden giriş yapabilirsin. Bunları da kaldırmak için hesabı yukarıdaki gibi sil. Boslingo'nun neyi sakladığı hakkında daha fazlası: <a href="privacy.html">gizlilik politikası</a>.</p></div>
-    <div lang="en"><p>You can delete your Boslingo account and all the data the server holds about you at any time.</p>
+  <article><p>You can delete your Boslingo account and all the data the server holds about you at any time.</p>
 <h2>In the app</h2>
 <ol><li>Open the <strong>Profile</strong> tab.</li><li>Scroll down and tap <strong>Delete my account and progress</strong>.</li><li>Confirm.</li></ol>
 <p>Your account is deleted at once, with everything the server holds about you: profile, display name, XP and streak, friendships, worm gifts, your progress backup and the Google link. The app then starts fresh.</p>
@@ -237,8 +214,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
 <ul><li>your display name or friend code (shown in Profile), or</li><li>the Google e-mail address you linked.</li></ul>
 <p>We delete the account and all its data within 30 days and confirm by e-mail. Nothing is kept afterwards.</p>
 <h2>Only sign out</h2>
-<p><strong>Profile → Sign out</strong> only signs this phone out. The account and its progress backup stay, so you can sign in with Google again later. To remove them, delete the account as above. More about what Boslingo stores: <a href="privacy.html">privacy policy</a>.</p></div>
-  </article>
+<p><strong>Profile → Sign out</strong> only signs this phone out. The account and its progress backup stay, so you can sign in with Google again later. To remove them, delete the account as above. More about what Boslingo stores: <a href="privacy.html">privacy policy</a>.</p></article>
 </div>
 </section>
 </main>
@@ -247,47 +223,26 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   <div class="wrap">
     <div class="cols">
       <div><h3>Boslingo</h3><ul>
-        <li><a href="index.html"><span lang="tr">Ana sayfa</span><span lang="en">Home</span></a></li>
-        <li><a href="index.html#how"><span lang="tr">Nasıl çalışır?</span><span lang="en">How it works</span></a></li>
-        <li><a href="index.html#get"><span lang="tr">Uygulamayı al</span><span lang="en">Get the app</span></a></li></ul></div>
-      <div><h3><span lang="tr">Gizlilik</span><span lang="en">Privacy</span></h3><ul>
-        <li><a href="privacy.html"><span lang="tr">Gizlilik politikası</span><span lang="en">Privacy policy</span></a></li>
-        <li><a href="delete-account.html"><span lang="tr">Hesabını sil</span><span lang="en">Delete your account</span></a></li></ul></div>
-      <div><h3><span lang="tr">İletişim</span><span lang="en">Contact</span></h3><ul>
+        <li><a href="index.html"><span>Home</span></a></li>
+        <li><a href="index.html#how"><span>How it works</span></a></li>
+        <li><a href="index.html#get"><span>Get the app</span></a></li></ul></div>
+      <div><h3><span>Privacy</span></h3><ul>
+        <li><a href="privacy.html"><span>Privacy policy</span></a></li>
+        <li><a href="delete-account.html"><span>Delete your account</span></a></li></ul></div>
+      <div><h3><span>Contact</span></h3><ul>
         <li><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></li></ul></div>
-      <div><h3><span lang="tr">Site dili</span><span lang="en">Site language</span></h3>
-        <div class="switch" role="group" aria-label="Site dili / Site language">
-          <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
-          <button type="button" data-lang="en" aria-pressed="false">English</button>
-        </div></div>
     </div>
-    <div class="bottom"><span lang="tr">© 2026 Boslingo · Boşnakça öğrenmek için bağımsız, ücretsiz bir uygulama.</span><span lang="en">© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
+    <div class="bottom"><span>© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
   </div>
 </footer>
 <script>
 (function () {
-  var root = document.documentElement;
-  function stored() { try { return localStorage.getItem('lang'); } catch (e) { return null; } }
-  function remember(lang) { try { localStorage.setItem('lang', lang); } catch (e) {} }
-  function show(lang) {
-    root.setAttribute('data-lang', lang);
-    root.setAttribute('lang', lang);
-    document.querySelectorAll('.switch button').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
-    });
-  }
-  var asked = new URLSearchParams(location.search).get('lang');
-  if (asked === 'tr' || asked === 'en') remember(asked);
-  var first = (asked === 'tr' || asked === 'en') ? asked : stored() || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
-  show(first);
-  document.querySelectorAll('.switch button').forEach(function (b) {
-    b.addEventListener('click', function () { show(b.dataset.lang); remember(b.dataset.lang); });
-  });
   var top = document.querySelector('.top');
   var hero = document.querySelector('.hero');
-  if (top && hero && 'IntersectionObserver' in window) {
+  if (!top) return;
+  if (hero && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) { top.classList.toggle('scrolled', !entries[0].isIntersecting); }).observe(hero);
-  } else if (top) {
+  } else {
     top.classList.add('scrolled');
   }
 })();
