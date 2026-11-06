@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boslingo – Learn Bosnian</title>
+<title>Bosnify – Learn Bosnian</title>
 <meta name="description" content="Learn Bosnian with a little chick: free lessons and stories, no ads.">
-<meta property="og:title" content="Boslingo – Learn Bosnian">
+<meta property="og:title" content="Bosnify – Learn Bosnian">
 <meta property="og:description" content="Learn Bosnian with a little chick: free lessons and stories, no ads.">
 <meta property="og:image" content="https://hasankaan28.github.io/boslingo/icon.png">
 <meta name="theme-color" content="#ffffff">
@@ -19,7 +19,7 @@
 
 :root {
   --white: #ffffff; --text: #3c3c3c; --muted: #777777; --line: #e5e5e5;
-  /* Boslingo's own: the wordmark blue, the yolk, the river, the cream paper */
+  /* Bosnify's own: the wordmark blue, the yolk, the river, the cream paper */
   --blue: #3f78c4; --blue-dark: #2f5f9e; --blue-soft: #e3effb;
   --yolk: #f4b52a; --yolk-dark: #c98d10; --yolk-soft: #fff4d8;
   --river: #4fb6b1; --paper: #fdf8ef;
@@ -203,7 +203,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="img/mascot.webp?v=b387ee76" alt="">boslingo</a>
+    <a class="brand" href="index.html"><img src="img/mascot.webp?v=b387ee76" alt="">bosnify</a>
     <div class="right">
       <a class="btn primary cta" href="index.html#get"><span>Get the app</span></a>
     </div>
@@ -279,7 +279,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   <img class="float f4" src="img/lang-it.webp?v=c71aa34b" alt="" aria-hidden="true">
   <div class="wrap inner">
     <h2>learn anytime, anywhere</h2>
-    <p>Boslingo is coming soon to Google Play and the App Store. The download links will be here as soon as it is out.</p>
+    <p>Bosnify is coming soon to Google Play and the App Store. The download links will be here as soon as it is out.</p>
     <div class="stores">
       <div class="store"><small><span>Coming soon</span></small><b>Google Play</b></div>
       <div class="store"><small><span>Coming soon</span></small><b>App Store</b></div>
@@ -323,7 +323,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
   <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 240 0 480 0 720 30 C 960 60 1200 60 1440 10 L1440 60 Z" fill="#3f78c4"/></svg>
   <div class="wrap">
     <div class="cols">
-      <div><h3>Boslingo</h3><ul>
+      <div><h3>Bosnify</h3><ul>
         <li><a href="index.html"><span>Home</span></a></li>
         <li><a href="index.html#how"><span>How it works</span></a></li>
         <li><a href="index.html#get"><span>Get the app</span></a></li></ul></div>
@@ -334,7 +334,7 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
         <li><a href="index.html#feedback"><span>Feedback</span></a></li>
         <li><a href="mailto:hasankaankarabulut121@gmail.com">hasankaankarabulut121@gmail.com</a></li></ul></div>
     </div>
-    <div class="bottom"><span>© 2026 Boslingo · an independent, free app for learning Bosnian.</span></div>
+    <div class="bottom"><span>© 2026 Bosnify · an independent, free app for learning Bosnian.</span></div>
   </div>
 </footer>
 <script>
@@ -357,8 +357,8 @@ footer .bottom { border-top: 2px solid rgba(255, 255, 255, .25); padding: 18px 0
     e.preventDefault();
     var message = form.message.value.trim();
     if (!message || form.botcheck.checked) return;
-    var body = { access_key: form.dataset.key, subject: 'Boslingo feedback (site, ' + form.dataset.lang + ')',
-      from_name: 'Boslingo site', message: message };
+    var body = { access_key: form.dataset.key, subject: 'Bosnify feedback (site, ' + form.dataset.lang + ')',
+      from_name: 'Bosnify site', message: message };
     if (form.email.value.trim()) body.replyto = form.email.value.trim();
     status.className = 'status'; status.textContent = status.dataset.sending; button.disabled = true;
     fetch('https://api.web3forms.com/submit', { method: 'POST',
